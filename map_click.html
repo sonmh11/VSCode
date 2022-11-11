@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>map_click</title>
+</head>
+<body>
+    <script>
+        window.onload=function(){
+            var userName=prompt("id 입력")
+            var name="잘못된 입력"
+            if(localStorage.getItem('title')){
+                name=localStorage.getItem('title')
+            }
+            //alert(name)
+            localStorage.setItem('title',name)
+            localStorage.setItem('ID',userName)
+
+            var u_name=document.getElementById('user_name')
+            u_name.innerHTML="Now User : "+userName
+            var g_name=document.getElementById('gym_name')
+            g_name.innerHTML="Gym Name : "+name
+        }
+    </script>
+    <h3 id="user_name">Now User : </h3>
+    <h3 id="gym_name">Gym Name : </h3>
+    <p>
+        <a href="/star">리뷰 작성</a>
+    </p>
+</body>
+</html>
