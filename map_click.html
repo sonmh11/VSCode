@@ -6,16 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>map_click</title>
+    <link rel="stylesheet" href="/map_click_css"/>
 </head>
 <body>
+    <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=adf74ad67e4999ffc26db73175bf8516&libraries=services"></script>
     <script>
         window.onload=function(){
-            var userName=prompt("id 입력")
+            //var userName=prompt("id 입력")
+            var userName=localStorage.getItem('ID')
             var name="잘못된 입력"
+            var gym_address="잘못된 입력"
             if(localStorage.getItem('title')){
                 name=localStorage.getItem('title')
             }
+            if(localStorage.getItem('address')){
+                gym_address=localStorage.getItem('address')
+            }
+            var Lat=localStorage.getItem('Lat')
+            var Lng=localStorage.getItem('Lng')
             //alert(name)
+            //console.log(Lat, Lng)
             localStorage.setItem('title',name)
             localStorage.setItem('ID',userName)
 
@@ -23,12 +33,70 @@
             u_name.innerHTML="Now User : "+userName
             var g_name=document.getElementById('gym_name')
             g_name.innerHTML="Gym Name : "+name
+            var g_address=document.getElementById('gym_address')
+            g_address.innerHTML="Gym address : "+gym_address
+
+            var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
+            mapOption = {
+                center: new kakao.maps.LatLng(37.527128, 127.000291), // 지도의 중심좌표
+                level: 3 // 지도의 확대 레벨
+            };  
+        
+            // 지도를 생성합니다    
+            var map = new kakao.maps.Map(mapContainer, mapOption); 
+        
+            var coords = new kakao.maps.LatLng(Lat, Lng);
+
+            // 결과값으로 받은 위치를 마커로 표시합니다
+            var marker = new kakao.maps.Marker({
+              map: map,
+              position: coords,
+              title: name
+            });
+            marker.setMap(map);
+
+            map.setCenter(coords)
+                
+            // 인포윈도우로 장소에 대한 설명을 표시합니다
+            var infowindow = new kakao.maps.InfoWindow({
+              content: '<div style="width:150px;text-align:center;padding:6px 0;">' + name + '</div>'
+            });
+            
+            infowindow.open(map, marker);
+        }
+        //집으로
+        function toHome(){
+            location.assign("/home")
+        }
+        function toReview(){
+            location.assign("/star")
+        }
+        function toMap(){
+            location.assign("/map")
         }
     </script>
-    <h3 id="user_name">Now User : </h3>
-    <h3 id="gym_name">Gym Name : </h3>
-    <p>
-        <a href="/star">리뷰 작성</a>
-    </p>
+    <div class="wrap">
+        <div class="cmd" style="width:100%;height:50px;">
+            <img id="image" src="/home_png" onclick="toHome()">
+            <input type="button" name="toMap" id="toMap" value="지도" onclick="toMap()">
+        </div>
+        <!-- <div class="cmd">
+            <input type="button" name="search" id="search" value="검색" onclick="toReview()">
+        </div> -->
+        <h3 id="user_name">사용자 id</h3>
+        <h3 id="gym_name">헬스장 이름</h3>
+        <h3 id="gym_address">주소</h3>
+
+        <div id="map" style="width:100%;height:300px;"></div>
+
+        
+        <script>
+            
+        </script>
+        <!-- <a href="/star">리뷰 작성</a> -->
+        <div class="cmd">
+            <input type="button" name="writeReview" id="writeReview" value="리뷰 작성" onclick="toReview()">
+        </div>
+    </div>
 </body>
 </html>
