@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>마이 페이지</title>
     <link rel="stylesheet" href="/home_css"/>
 </head>
 <body>
     <script>
         window.onload=function(){
-            var userName="testID"
-            //var userName=""
-            localStorage.setItem('ID',userName)
+            var userName=localStorage.getItem('ID')
+            localStorage.setItem('ID', userName)
+
+            var AccountRole = "ADMIN"; //ADMIN, USER, GYM, RESIST
 
             var button=document.createElement('button')
             button.type='button'
@@ -21,7 +22,7 @@
 
             if(userName !=""){  //로그인 돼있을 때
                 var u_name=document.getElementById('userName')
-                u_name.innerHTML="Now User : "+userName
+                u_name.innerHTML="User : "+userName
 
                 button.innerHTML="Logout"
                 button.className='Logout'
@@ -33,29 +34,39 @@
                 logout.innerHTML+=`<br>`
                 button.className='cmd'
                 
-                button.innerHTML="마이 페이지"
-                button.onclick=function(){
-                    location.assign("/myPage")
-                }
-                var myPage=document.getElementById('myPage')
-                myPage.appendChild(button)
-                myPage.innerHTML+=`<br>`
+                if(AccountRole=="ADMIN"){   //ADMIN일때
+                    button.innerHTML="회원 조회"
+                    button.onclick=function(){
+                        location.assign("/allaccount")
+                    }
+                    var allaccount=document.getElementById('allaccount')
+                    allaccount.appendChild(button)
+                    allaccount.innerHTML+=`<br>`
 
-                button.innerHTML="헬스장 선택"
-                button.onclick=function(){
-                    location.assign("/Map")
+                    button.innerHTML="가입 등록"
+                    button.onclick=function(){
+                        location.assign("/gymMasterResist")
+                    }
+                    var gymMasterResist=document.getElementById('gymMasterResist')
+                    gymMasterResist.appendChild(button)
+                    gymMasterResist.innerHTML+=`<br>`
                 }
-                var map=document.getElementById('map')
-                map.appendChild(button)
-                map.innerHTML+=`<br>`
 
-                button.innerHTML="헬스장 가입"
+                button.innerHTML="회원 삭제"
                 button.onclick=function(){
-                    location.assign("/Map2")
+                    location.assign("/member_delete")
                 }
-                var map2=document.getElementById('map2')
-                map2.appendChild(button)
-                map2.innerHTML+=`<br>`
+                var member_delete=document.getElementById('member_delete')
+                member_delete.appendChild(button)
+                member_delete.innerHTML+=`<br>`
+
+                button.innerHTML="회원 리뷰 조회"
+                button.onclick=function(){
+                    location.assign("/user_review")
+                }
+                var user_review=document.getElementById('user_review')
+                user_review.appendChild(button)
+                user_review.innerHTML+=`<br>`
             }
             else{   //로그인 상태 아닐 때 
                 var u_name=document.getElementById('userName')
@@ -87,12 +98,14 @@
         <a id="logout" href="/logout" target="_self"></a>
     </div>
     <div class = "wrap">
-        <h1>어디가GYM?</h1>
+        <h1>마이 페이지</h1>
         <h3 id="userName"></h3>
         <p>
-        <a id="myPage" href="/myPage"></a>
-        <a id="map" href="/Map"></a>
-        <a id="map2" href="/Map2"></a>
+        <a id="allaccount" href="/allaccount"></a>
+        <a id="gymMasterResist" href="/gymMasterResist"></a>
+
+        <a id="member_delete" href="/member_delete"></a>
+        <a id="user_review" href="user_review"></a>
 
         <a id="login" href="/login" target="_self"></a>
         <a id="sign" href="/member_sign2"></a>

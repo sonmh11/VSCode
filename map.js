@@ -12,9 +12,28 @@ app.get('/a', (request, response)=>{    //test
     response.sendFile("C:/VSCODE/js2/a.html")
 })
 
+app.get('/', (request, response)=>{    //test
+    response.sendFile("C:/VSCODE/js2/home.html")
+})
+
 app.get('/home', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/home.html")
-    //response.sendFile("C:/VSCODE/js2/a.html")
+})
+
+app.get('/home_css', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/home.css")
+})
+
+app.get('/myPage', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/userPage.html")
+})
+
+app.get('/member_delete', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/member_delete.html")
+})
+
+app.get('/user_review', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/reviewer.html")
 })
 
 app.get('/map', (request, response)=>{
@@ -23,6 +42,14 @@ app.get('/map', (request, response)=>{
 
 app.get('/map_click',(request, response)=>{
     response.sendFile("C:/VSCODE/js2/map_click.html")
+})
+
+app.get('/review_delete', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/review_delete.html")
+})
+
+app.get('/change_review', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/change.html")
 })
 
 app.get('/map_click_css',(request, response)=>{
