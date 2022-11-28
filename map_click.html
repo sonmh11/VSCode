@@ -13,15 +13,16 @@
     <script>
         window.onload=function(){
             //var userName=prompt("id 입력")
-            var userName=localStorage.getItem('ID')
-            var name="잘못된 입력"
-            var gym_address="잘못된 입력"
-            if(localStorage.getItem('title')){
-                name=localStorage.getItem('title')
-            }
-            if(localStorage.getItem('address')){
-                gym_address=localStorage.getItem('address')
-            }
+            // var userName=localStorage.getItem('ID')
+            // var name="잘못된 입력"
+            // var gym_address="잘못된 입력"
+            // if(localStorage.getItem('title')){
+            //     name=localStorage.getItem('title')
+            // }
+            // if(localStorage.getItem('address')){
+            //     gym_address=localStorage.getItem('address')
+            // }
+            var userName="test ID"
             var Lat=localStorage.getItem('Lat')
             var Lng=localStorage.getItem('Lng')
             //alert(name)
@@ -88,20 +89,14 @@
         <h3 id="gym_address">주소</h3>
 
         <div id="map" style="width:100%;height:300px;"></div>
-
         
-        <script>
-            
-        </script>
         <!-- <a href="/star">리뷰 작성</a> -->
         <br>
         <div>
             <input type="button" class="cmd" name="writeReview" id="writeReview" value="리뷰 작성" onclick="toReview()">
-            <li><a href="/board">리뷰 작성</a></li>
             <li><a href="/review_delete">리뷰 삭제</a></li>
             <li><a href="/gym_review">헬스장 리뷰 조회하기</a></li>
             <li><a href="/change_review">리뷰 변경하기</a></li>
-            <li><a href="/remap">헬스장 선택</a></li>
             <li><a href="/reservation">예약하기</a></li>
         </div>
     </div>

@@ -28,6 +28,14 @@ app.get('/myPage', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/userPage.html")
 })
 
+app.get('/allaccount', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/memberselect2.html")
+})
+
+app.get('/gymMasterResist', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/permit.html")
+})
+
 app.get('/member_delete', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/member_delete.html")
 })
@@ -50,6 +58,10 @@ app.get('/review_delete', (request, response)=>{
 
 app.get('/change_review', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/change.html")
+})
+
+app.get('/reservation', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/rev.html")
 })
 
 app.get('/map_click_css',(request, response)=>{
