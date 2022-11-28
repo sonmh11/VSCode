@@ -92,8 +92,12 @@
         function toHome(){
             location.assign("/")
         }
+        function toback(){
+            location.assign("/")
+        }
     </script>
     <div class="home">
+        <img class="image" src="/back_png" onclick="toback()">
         <img class="image" src="/home_png" onclick="toHome()">
         <a id="logout" href="/logout" target="_self"></a>
     </div>

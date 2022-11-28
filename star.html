@@ -28,12 +28,16 @@
             g_name.innerHTML="Gym Name : "+gymName
         }
         function toHome(){
-          location.assign("/home")
+          location.assign("/")
+        }
+        function toback(){
+            location.assign("/map_click")
         }
     </script>
     
     <div class="wrap">
         <div class="home" style="width:480px;height:50px;">
+            <img class="image" src="/back_png" onclick="toback()">
             <img id="image" src="/home_png" onclick="toHome()">
         </div>
         <h1>리뷰</h1>

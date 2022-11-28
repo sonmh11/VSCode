@@ -9,6 +9,7 @@
 </head>
 <body>
 <div style="width:100%;height:50px;">
+  <img class="image" src="/back_png" onclick="toback()">
   <img id="image" src="/home_png" onclick="toHome()">
 </div>
 <div id="map" style="width:100%;height:700px;"></div>
@@ -18,6 +19,9 @@
 //집으로
 function toHome(){
   location.assign("/home")
+}
+function toback(){
+  location.assign("/")
 }
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
     mapOption = {

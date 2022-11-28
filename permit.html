@@ -15,11 +15,15 @@
         function toHome(){
             location.assign("/")
         }
+        function toback(){
+            location.assign("/myPage")
+        }
         function toLogout(){
             location.assign("/logout")
         }
     </script>
     <div class="home">
+        <img class="image" src="/back_png" onclick="toback()">
         <img class="image" src="/home_png" onclick="toHome()">
         <button id="logout" class="cmd" target="_self" onclick="toLogout()">Logout</button>
     </div>
