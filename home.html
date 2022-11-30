@@ -10,11 +10,11 @@
 <body>
     <script>
         window.onload=function(){
-            var userName=""
-            userName="testID"
-            localStorage.setItem('ID',userName)
+            //var userName=""
+            //userName="testID"
+            //localStorage.setItem('ID',userName)
 
-            var AccountRole = "RESIST"; //ADMIN, USER, GYM, RESIST
+            //var AccountRole = "RESIST"; //ADMIN, USER, GYM, RESIST
 
             var button=document.createElement('button')
             button.type='button'
@@ -22,8 +22,8 @@
             button.className='cmd';
 
             if(userName !=""){  //로그인 돼있을 때
-                var u_name=document.getElementById('userName')
-                u_name.innerHTML="Now User : "+userName
+                //var u_name=document.getElementById('userName')
+                u_name.innerHTML="Now User : "+'<td th:text ="${name}">'
 
                 button.innerHTML="Logout"
                 //button.className='cmd'
