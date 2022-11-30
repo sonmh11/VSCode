@@ -9,21 +9,24 @@
 </head>
 <body>
     <script>
+        var userName=""
+        userName = "[[${userName}]]";
+        //userName="test"
+
+        var AccountRole =""
+        AccountRole = "[[${AccountRole}]]";
+        //AccountRole = ["ADMIN", "USER", "GYM", "REGIST]"] //ADMIN, USER, GYM, REGIST]
+        
         window.onload=function(){
-            //var userName=""
-            //userName="testID"
-            //localStorage.setItem('ID',userName)
-
-            //var AccountRole = "RESIST"; //ADMIN, USER, GYM, RESIST
-
+            
             var button=document.createElement('button')
             button.type='button'
             button.innerHTML=' '
             button.className='cmd';
 
             if(userName !=""){  //로그인 돼있을 때
-                //var u_name=document.getElementById('userName')
-                u_name.innerHTML="Now User : "+'<td th:text ="${name}">'
+                var u_name=document.getElementById('userName')
+                u_name.innerHTML="Now User : "+userName
 
                 button.innerHTML="Logout"
                 //button.className='cmd'
@@ -43,7 +46,7 @@
                 myPage.appendChild(button)
                 myPage.innerHTML+=`<br>`
 
-                if(AccountRole=="ADMIN"){   //ADMIN일때
+                if(AccountRole.includes("ADMIN")){   //ADMIN 일때
                     button.innerHTML="관리자 페이지"
                     button.onclick=function(){
                         location.assign("/adminPage")
@@ -53,7 +56,7 @@
                     myPage.innerHTML+=`<br>`
                 }
 
-                if(AccountRole=="RESIST"){   //REGIST일때
+                if(AccountRole.includes("REGIST]")){   //REGIST] 일때
                     button.innerHTML="회원 가입 페이지"
                     button.onclick=function(){
                         location.assign("/registerPage")
@@ -63,7 +66,7 @@
                     myPage.innerHTML+=`<br>`
                 }
 
-                if(AccountRole=="GYM"){   //GYM일때
+                if(AccountRole.includes("GYM")){   //GYM 일때
                     button.innerHTML="헬스장 점주 페이지"
                     button.onclick=function(){
                         location.assign("/gymMasterPage")
