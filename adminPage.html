@@ -10,8 +10,14 @@
 <body>
     <script>
         window.onload=function(){
-            var userName=localStorage.getItem('ID')
-            localStorage.setItem('ID', userName)
+            var userName=""
+            userName = "[[${userName}]]";
+            //userName="test"
+
+            var AccountRole =""
+            AccountRole = "[[${AccountRole}]]";
+            //AccountRole = ["ADMIN", "USER", "GYM", "REGIST"] 
+            //ADMIN, USER, GYM, REGIST
 
             var button=document.createElement('button')
             button.type='button'

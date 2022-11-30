@@ -9,16 +9,16 @@
 </head>
 <body>
     <script>
-        var userName=""
-        userName = "[[${userName}]]";
-        //userName="test"
-
-        var AccountRole =""
-        AccountRole = "[[${AccountRole}]]";
-        //AccountRole = ["ADMIN", "USER", "GYM", "REGIST]"] //ADMIN, USER, GYM, REGIST]
-        
         window.onload=function(){
-            
+            var userName=""
+            userName = "[[${userName}]]";
+            //userName="test"
+
+            var AccountRole =""
+            AccountRole = "[[${AccountRole}]]";
+            AccountRole = ["ADMIN", "USER", "GYM", "REGIST"] 
+            //ADMIN, USER, GYM, REGIST
+
             var button=document.createElement('button')
             button.type='button'
             button.innerHTML=' '
@@ -56,7 +56,7 @@
                     myPage.innerHTML+=`<br>`
                 }
 
-                if(AccountRole.includes("REGIST]")){   //REGIST] 일때
+                if(AccountRole.includes("REGIST")){   //REGIST 일때
                     button.innerHTML="회원 가입 페이지"
                     button.onclick=function(){
                         location.assign("/registerPage")

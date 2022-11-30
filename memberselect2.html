@@ -4,19 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SHOW MEMBER</title>
+    <title>회원 조회</title>
     <link rel="stylesheet" href="/home_css"/>
 </head>
 <body>
     <script>
         window.onload=function(){
-            var userName=localStorage.getItem('ID')
+            var userName=""
+            userName = "[[${userName}]]";
+            //userName="test"
         }
         function toHome(){
             location.assign("/")
         }
         function toBack(){
-            location.assign("/myPage")
+            location.assign("/adminPage")
         }
         function toLogout(){
             location.assign("/logout")
@@ -28,22 +30,21 @@
         <button id="logout" class="cmd" target="_self" onclick="toLogout()">Logout</button>
     </div>
     <div class = "wrap">
-        <h1>SHOW MEMBER</h1>
+        <h1>회원 조회</h1>
         <table>
             <tr>
-                <th>ID</th>
-                <th>ROLES</th>
+                <th>아이디</th>
+                <th>권한</th>
             </tr>
-            <!--{{#re}}
-                <tbody>
-            <th>{{id}}</th>
-            <th>{{roles}}</th>
-                </tbody>
-            {{/re}}-->
             <tr>
+            <tr th:each = "re:${re}">
+                <td th:text ="${re.id}">
+                <td th:text ="${re.roles}">
+            </tr>
+            <!--<tr>
                 <td>testID</td>
                 <td>USER?</td>
-            </tr>
+            </tr>-->
         </table>
     </div>
 </body>

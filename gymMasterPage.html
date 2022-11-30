@@ -10,11 +10,13 @@
 <body>
     <script>
         window.onload=function(){
-            var userName=localStorage.getItem('ID')
-            localStorage.setItem('ID', userName)
-            //userName=""
+            var userName=""
+            userName = "[[${userName}]]";
+            //userName="test"
 
-            var AccountRole = "ADMIN"; //ADMIN, USER, GYM, RESIST
+            var GymId=""
+            GymId="[[${GymId}]]";
+            //GymId="testGymId"
 
             var button=document.createElement('button')
             button.type='button'
@@ -25,7 +27,6 @@
                 var u_name=document.getElementById('userName')
                 u_name.innerHTML="로그인된 사용자 : "+userName
 
-                var GymId="test GymID"
                 GymId.innerHTML="헬스장: "+GymId
 
                 button.innerHTML="Logout"
