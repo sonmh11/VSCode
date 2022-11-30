@@ -28,6 +28,18 @@ app.get('/myPage', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/userPage.html")
 })
 
+app.get('/adminPage', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/adminPage.html")
+})
+
+app.get('/gymMasterPage', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/gymMasterPage.html")
+})
+
+app.get('/registerPage', (request, response)=>{
+    response.sendFile("C:/VSCODE/js2/registerPage.html")
+})
+
 app.get('/allaccount', (request, response)=>{
     response.sendFile("C:/VSCODE/js2/memberselect2.html")
 })
@@ -94,6 +106,10 @@ app.get('/star_png',(request,response)=>{
 
 app.get('/home_png',(request,response)=>{
     response.sendFile("C:/VSCODE/js2/img/home.png")
+})
+
+app.get('/back_png',(request,response)=>{
+    response.sendFile("C:/VSCODE/js2/img/back.png")
 })
 
 app.listen(8080,()=>{

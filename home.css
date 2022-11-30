@@ -26,7 +26,8 @@
     /* float: right; */
 }
 .cmd:hover{
-    background: #3300ff;
+    /* background: #3300ff; */
+    background: #0077FF;
 }
 .Logout{
     text-align: left;
@@ -35,6 +36,11 @@
     background-color: #fff;
     background-color:#000;  
     color: #fff;
+    cursor:pointer;
+}
+.Logout:hover{
+    /* background: #3300ff; */
+    background: #0077FF;
 }
 .inp{   
     /* border: none; */

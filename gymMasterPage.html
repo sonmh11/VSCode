@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+    <title>헬스장 점주 페이지</title>
     <link rel="stylesheet" href="/home_css"/>
 </head>
 <body>
     <script>
         window.onload=function(){
-            var userName=""
-            userName="testID"
-            localStorage.setItem('ID',userName)
+            var userName=localStorage.getItem('ID')
+            localStorage.setItem('ID', userName)
+            //userName=""
 
-            var AccountRole = "RESIST"; //ADMIN, USER, GYM, RESIST
+            var AccountRole = "ADMIN"; //ADMIN, USER, GYM, RESIST
 
             var button=document.createElement('button')
             button.type='button'
@@ -23,7 +23,10 @@
 
             if(userName !=""){  //로그인 돼있을 때
                 var u_name=document.getElementById('userName')
-                u_name.innerHTML="Now User : "+userName
+                u_name.innerHTML="로그인된 사용자 : "+userName
+
+                var GymId="test GymID"
+                GymId.innerHTML="헬스장: "+GymId
 
                 button.innerHTML="Logout"
                 //button.className='cmd'
@@ -34,52 +37,31 @@
                 logout.appendChild(button)
                 logout.innerHTML+=`<br>`
                 //button.className='cmd'
-                
-                button.innerHTML="마이 페이지"
+
+                button.innerHTML="헬스장 리뷰 조회하기"
                 button.onclick=function(){
-                    location.assign("/myPage")
+                    location.assign("/gym_review")
                 }
-                var myPage=document.getElementById('myPage')
-                myPage.appendChild(button)
-                myPage.innerHTML+=`<br>`
+                var member_delete=document.getElementById('gym_review')
+                member_delete.appendChild(button)
+                member_delete.innerHTML+=`<br>`
 
-                if(AccountRole=="ADMIN"){   //ADMIN일때
-                    button.innerHTML="관리자 페이지"
-                    button.onclick=function(){
-                        location.assign("/adminPage")
-                    }
-                    var myPage=document.getElementById('adminPage')
-                    myPage.appendChild(button)
-                    myPage.innerHTML+=`<br>`
+                button.innerHTML="예약 확인하기"
+                button.onclick=function(){
+                    location.assign("/reservationCheck")
                 }
+                var user_review=document.getElementById('reservationCheck')
+                user_review.appendChild(button)
+                user_review.innerHTML+=`<br>`
 
-                if(AccountRole=="RESIST"){   //REGIST일때
-                    button.innerHTML="회원 가입 페이지"
-                    button.onclick=function(){
-                        location.assign("/registerPage")
-                    }
-                    var myPage=document.getElementById('registerPage')
-                    myPage.appendChild(button)
-                    myPage.innerHTML+=`<br>`
-                }
-
-                if(AccountRole=="GYM"){   //GYM일때
-                    button.innerHTML="헬스장 점주 페이지"
-                    button.onclick=function(){
-                        location.assign("/gymMasterPage")
-                    }
-                    var myPage=document.getElementById('gymMasterPage')
-                    myPage.appendChild(button)
-                    myPage.innerHTML+=`<br>`
-                }
-
+                
                 button.innerHTML="헬스장 선택"
                 button.onclick=function(){
-                    location.assign("/Map")
+                    location.assign("/remap")
                 }
-                var map=document.getElementById('map')
-                map.appendChild(button)
-                map.innerHTML+=`<br>`
+                var user_review=document.getElementById('remap')
+                user_review.appendChild(button)
+                user_review.innerHTML+=`<br>`
             }
             else{   //로그인 상태 아닐 때 
                 var u_name=document.getElementById('userName')
@@ -90,6 +72,14 @@
                     location.assign("/login")
                 }
                 var login=document.getElementById('login')
+                login.appendChild(button)
+                login.innerHTML+=`<br>`
+
+                button.innerHTML="Gym separate Review"
+                button.onclick=function(){
+                    location.assign("/gym_review")
+                }
+                var login=document.getElementById('gym_review')
                 login.appendChild(button)
                 login.innerHTML+=`<br>`
 
@@ -105,22 +95,26 @@
         function toHome(){
             location.assign("/")
         }
+        function toback(){
+            location.assign("/")
+        }
     </script>
     <div class="home">
+        <img class="image" src="/back_png" onclick="toback()">
         <img class="image" src="/home_png" onclick="toHome()">
         <a id="logout" href="/logout" target="_self"></a>
     </div>
     <div class = "wrap">
-        <h1>어디가GYM?</h1>
+        <h1>WELCOME</h1>
         <h3 id="userName"></h3>
+        <h3 id="GymId"></h3>
         <p>
-        <a id="myPage" href="/myPage"></a>
-        <a id="adminPage" href="/adminPage"></a>
-        <a id="registerPage" href="/registerPage"></a>
-        <a id="gymMasterPage" href="/gymMasterPage"></a>
-        <a id="map" href="/Map"></a>
+        <a id="gym_review" href="/gym_review"></a>
+        <a id="reservationCheck" href="reservationCheck"></a>
+        <a id="remap" href="remap"></a>
 
         <a id="login" href="/login" target="_self"></a>
+        <a id="gym_review" href="/gym_review"></a>
         <a id="sign" href="/member_sign2"></a>
         </p>
     </div>

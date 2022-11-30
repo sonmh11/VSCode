@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>마이 페이지</title>
+    <title>관리자 페이지</title>
     <link rel="stylesheet" href="/home_css"/>
 </head>
 <body>
@@ -12,8 +12,6 @@
         window.onload=function(){
             var userName=localStorage.getItem('ID')
             localStorage.setItem('ID', userName)
-
-            var AccountRole = "ADMIN"; //ADMIN, USER, GYM, RESIST
 
             var button=document.createElement('button')
             button.type='button'
@@ -34,28 +32,35 @@
                 logout.innerHTML+=`<br>`
                 //button.className='cmd'
 
-                button.innerHTML="회원 삭제"
+                button.innerHTML="회원 조회"
                 button.onclick=function(){
-                    location.assign("/member_delete")
+                    location.assign("/allaccount")
                 }
-                var member_delete=document.getElementById('member_delete')
+                var member_delete=document.getElementById('allaccount')
                 member_delete.appendChild(button)
                 member_delete.innerHTML+=`<br>`
 
-                button.innerHTML="회원 리뷰 조회"
+                button.innerHTML="예약 관리"
                 button.onclick=function(){
-                    location.assign("/user_review")
+                    location.assign("/adminReservationCheck")
                 }
-                var user_review=document.getElementById('user_review')
+                var user_review=document.getElementById('adminReservationCheck')
                 user_review.appendChild(button)
                 user_review.innerHTML+=`<br>`
 
-                
-                button.innerHTML="내 예약 조회"
+                button.innerHTML="리뷰 삭제"
                 button.onclick=function(){
-                    location.assign("/userReservation")
+                    location.assign("/adminReviewDelete")
                 }
-                var user_review=document.getElementById('userReservation')
+                var user_review=document.getElementById('adminReviewDelete')
+                user_review.appendChild(button)
+                user_review.innerHTML+=`<br>`
+
+                button.innerHTML="가입 등록"
+                button.onclick=function(){
+                    location.assign("/gymMasterRegist")
+                }
+                var user_review=document.getElementById('gymMasterRegist')
                 user_review.appendChild(button)
                 user_review.innerHTML+=`<br>`
             }
@@ -70,14 +75,6 @@
                 var login=document.getElementById('login')
                 login.appendChild(button)
                 login.innerHTML+=`<br>`
-
-                button.innerHTML="Regist"
-                button.onclick=function(){
-                    location.assign("/member_sign2")
-                }
-                var sign=document.getElementById('sign')
-                sign.appendChild(button)
-                sign.innerHTML+=`<br>`
             }
         }
         function toHome(){
@@ -93,15 +90,15 @@
         <a id="logout" href="/logout" target="_self"></a>
     </div>
     <div class = "wrap">
-        <h1>마이 페이지</h1>
+        <h1>관리자 페이지</h1>
         <h3 id="userName"></h3>
         <p>
-        <a id="member_delete" href="/member_delete"></a>
-        <a id="user_review" href="user_review"></a>
-        <a id="userReservation" href="userReservation"></a>
+        <a id="allaccount" href="/allaccount"></a>
+        <a id="adminReservationCheck" href="adminReservationCheck"></a>
+        <a id="adminReviewDelete" href="adminReviewDelete"></a>
+        <a id="gymMasterRegist" href="/gymMasterRegist"></a>
 
         <a id="login" href="/login" target="_self"></a>
-        <a id="sign" href="/member_sign2"></a>
         </p>
     </div>
 </body>
