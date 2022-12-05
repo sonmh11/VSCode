@@ -18,8 +18,9 @@
 .cmd{
     text-align: center;
     padding: 10px 20px;
+    width: 200px;
+    border-radius: 50px;
     border: 1px solid #e8e8e8;
-    background-color: #fff;
     background-color:#000;  
     color: #fff;
     cursor:pointer;
@@ -32,17 +33,27 @@
 .Logout{
     text-align: left;
     padding: 10px 20px;
-    border: 1px solid #e8e8e8;
+    border-radius: 50px;
+    /* border: 1px solid #e8e8e8; */
     background-color: #fff;
-    background-color:#000;  
-    color: #fff;
+    color: #000;
     cursor:pointer;
+    transition: 0.3s;
 }
 .Logout:hover{
     /* background: #3300ff; */
+    opacity: 1;
+    color: #fff;
     background: #0077FF;
+    border-color: #0077FF;
 }
-.inp{   
-    /* border: none; */
-    /* color: #aaa; */
+.modal {
+    position: fixed;
+    font-family: Arial, Helvetica, sans-serif;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 99999;
+    height: 100%;
+    width: 100%;
 }
