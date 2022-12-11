@@ -12,23 +12,27 @@ html, body{
 
 }
 .cmd{
-    /* margin-top: 20px; */
-    /* text-align: right; */
     padding: 10px 20px;
     border: 1px solid #e8e8e8;
-    background-color: #fff;
-    background-color:#000;  
+    background-color: #ffffff;
+    background-color:#000000;
     color: #fff;
     float: right;
 }
-/* .cmd input[type="button"]{
+.cmd2{
     padding: 10px 20px;
+    width: 130px;
     border: 1px solid #e8e8e8;
-    background-color: #fff;
-    background-color:#000;  
+    background-color: #ffffff;
+    background-color:#000000;
     color: #fff;
-    float: right;
-} */
+    /* float: left; */
+    margin:auto;
+    display:block;
+}
+.cmd2:hover{
+    background: #0077FF;
+}
 .cmd:hover{
-    background: #3300ff;
+    background: #0077FF;
 }

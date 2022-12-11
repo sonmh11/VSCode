@@ -78,6 +78,11 @@ h1{
     background-color:#000;  
     color: #fff;
 }
+.cmd input:hover{
+    /* background: #3300ff; */
+    background: #0077FF;
+    opacity: 1;
+}
 
 .warning_msg {
     display: none;
