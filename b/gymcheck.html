@@ -1,0 +1,35 @@
+<!--signup.html-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/home.css"/>
+</head>
+<script>
+  window.onload=function(){
+    var userName=localStorage.getItem('ID')
+  }
+  function toHome(){
+    location.assign("/")
+  }
+  function toLogout(){
+    location.assign("/logout")
+  }
+</script>
+<div class="home">
+  <img class="image" src="/img/home.png" onclick="toHome()">
+  <button id="logout" class="Logout" target="_self" onclick="toLogout()">Logout</button>
+  
+</div>
+<body>
+<div class = "wrap">
+  <h2>리뷰를 확인하겠습니까?</h2>
+<form method="post" action="/gym_review">
+  <input type="hidden" name="gym" th:value ="${GymId}"><br/>
+  <input type="hidden" name="id" value="target"/>
+  <input type="hidden" name="reviews" value="target"/>
+  <input type="submit" class="cmd" value="리뷰 확인하기"/>
+</form>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/home.css"/>
+  <title>RESIST PAGE</title>
+</head>
+<script>
+  window.onload=function(){
+    var userName=localStorage.getItem('ID')
+  }
+  function toHome(){
+    location.assign("/")
+  }
+  function toLogout(){
+    location.assign("/logout")
+  }
+  function toBack(){
+    history.back()
+  }
+  function check(){
+    if(document.getElementById("password").value.length <4){
+      alert("비밀번호를 4자리 이상 입력해주세요")
+      return false
+    }
+  }
+</script>
+<div class ="home">
+  <img id="back" src="/img/back.png" onclick="toBack()">
+  <img class="image" src="/img/home.png" onclick="toHome()">
+  <button id="logout" class="Logout" target="_self" onclick="toLogout()">Logout</button>
+</div>
+<body>
+<div class="wrap">
+  <th><h1>REGIST PAGE</h1></th>
+  <form method="post" action="/gymMaster" onsubmit="return check()">
+    <label>Id </label><input type="text" id="id" name="id" placeholder="Id 입력"><br/>
+    <label>password </label><input type="text" id="password" name="pw" placeholder="4자 이상의 password 입력"><br/><br>
+    <input type="hidden" name="gym" th:value="${GymId}"/>
+    <input type="hidden" name="roles" value="GYM"/>
+    <input type="submit" class="cmd" value="Register"/>
+  </form>
+</div>
+</body>
+</html>

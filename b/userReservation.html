@@ -1,0 +1,96 @@
+<!--signup.html-->
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/css/home.css"/>
+</head>
+<script>
+  window.onload=function(){
+    var userName=localStorage.getItem('ID')
+  }
+  function toHome(){
+    location.assign("/")
+  }
+  function toLogout(){
+    location.assign("/logout")
+  }
+  function toBack(){
+    history.back()
+  }
+</script>
+<div class ="home">
+  <img id="back" src="/img/back.png" onclick="toBack()">
+  <img class="image" src="/img/home.png" onclick="toHome()">
+  <button id="logout" class="Logout" target="_self" onclick="toLogout()">Logout</button>
+</div>
+<div class="wrap">
+  <body>
+  <div class = "content">
+    <div>
+      <th><h1>내 예약 조회</h1></th>
+      <h3>현재 로그인된 사용자 : <td th:text ="${userName}"></h3>
+      <tr>
+        <form method="post" action="/delete_reservation2">
+          <h5>예약 삭제</h5>
+          예약 헬스장: <input type="text" name="gym"></br>
+          예약자 이름: <input type="text" name="name"></br>
+          <input type="hidden" name="id" th:value="${userName}">
+          예약 날짜: &nbsp;&nbsp;<input type="date" name="times">
+          <input type="hidden" name="endTimes" value="0000-00-00">
+          <input type="submit" class="delete" value="삭제"/></br>
+        </form>
+      </tr>
+      <form method="post" action="/search/Time">
+        <h5>예약 조회</h5>
+        <input type="hidden" name="gym" value="target">
+        <input type="hidden" name="id" th:value="${userName}">
+        <input type="hidden" name="name" value="target">
+        날짜 별 조회: <input type="date" name="times">
+        <input type="hidden" name="endTimes" value="0000-00-00">
+        <input type="submit" class="search" value="검색"/>
+      </form></br>
+      <form method="post" action="/search/Gym">
+        헬스장 별 조회 : <input type="text" name="gym">
+        <input type="hidden" name="id" th:value="${userName}">
+        <input type="hidden" name="name" value="target">
+        <input type="hidden" name="times" value="0000-00-00">
+        <input type="hidden" name="endTimes" value="0000-00-00">
+        <input type="submit" class="search" value="검색"/>
+      </form></br>
+      <form method="post" action="/search/Name">
+        <input type="hidden" name="gym" value = "target">
+        <input type="hidden" name="id" th:value="${userName}">
+        예약자 이름 별 조회: <input type="text" name="name">
+        <input type="hidden" name="times" value="0000-00-00">
+        <input type="hidden" name="endTimes" value="0000-00-00">
+        <input type="submit" class="search" value="검색"/>
+      </form></br>
+      <table border="1">
+        <tr>
+          <th>예약자 이름</th>
+          <th>예약자 시간</th>
+          <th>예약 헬스장</th>
+        </tr>
+        <tbody>
+        <tr th:each = "re:${re}">
+          <td th:text ="${re.name}">
+          <td th:text ="${re.times}">
+          <td th:text ="${re.gym}">
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <br>
+  <form method="post" action="/search/reset">
+    <input type="hidden" name="gym" value = "target">
+    <input type="hidden" name="id" value="target">
+    <input type="hidden" name="name" value="target">
+    <input type="hidden" name="times" value="0000-00-00">
+    <input type="hidden" name="endTimes" value="0000-00-00">
+    <input type="submit" class="cmd" value="초기화"/>
+  </form></br>
+  </body>
+</div>
+</html>

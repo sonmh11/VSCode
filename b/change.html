@@ -1,0 +1,108 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>리뷰 변경 PAGE</title>
+  <link rel="stylesheet" href="/css/home.css"/>
+  <script type="text/javascript" src="/js/star.js"></script>
+</head>
+<body>
+  <style>
+    .warning_msg {
+        display: none;
+        position: relative;
+        text-align: center;
+        background: #ffffff;
+        line-height: 26px;
+        width: 100%;
+        color: red;
+        padding: 10px;
+        box-sizing: border-box;
+        /* border: 1px solid #e0e0e0; */
+        border:none
+    }
+    .review_textarea{
+      width:300px;
+    }
+  </style>
+<script>
+  document.addEventListener('DOMContentLoaded', function(){
+    //리뷰 글자수 초과 체크
+    document.querySelector('.review_textarea').addEventListener('keydown',function(){
+        //리뷰 400자 초과 안되게 자동 자름
+        let review = document.querySelector('.review_textarea');
+        let lengthCheckEx = /^.{400,}$/;
+        if(lengthCheckEx.test(review.value)){
+            //400자 초과 컷
+            review.value = review.value.substr(0,400);
+        }
+    });
+  })
+  window.onload=function(){
+    var userName=localStorage.getItem('ID')
+  }
+  function toHome(){
+    location.assign("/")
+  }
+  function toLogout(){
+    location.assign("/logout")
+  }
+  function reviewCheck(){
+      //리뷰 1글자 미만이면 메시지 표시
+        if(document.querySelector('.review_textarea').value.length < 1){
+            //안내메시지 표시
+            document.querySelector('.review_contents .warning_msg').style.display = 'block';
+            //지정된 시간 후 안내 메시지 감춤
+            setTimeout(function(){
+                document.querySelector('.review_contents .warning_msg').style.display = 'none';
+            },1000);    
+            return false;
+        }
+    }
+</script>
+<div class ="home">
+  <img class="image" src="/img/home.png" onclick="toHome()">
+  <button id="logout" class="Logout" target="_self" onclick="toLogout()">Logout</button>
+</div>
+<div class = "wrap">
+  <h1>리뷰 변경 PAGE</h1>
+  <h3>헬스장 : <td th:text = "${GymId}"></h3>
+  <form method="post" action="/change_review" onsubmit="return reviewCheck()">
+    <lebel>변경할 리뷰 번호 </lebel><input type="number" name="number_review"/></br>
+    <input type="hidden" name="id" th:value="${id}">
+    <label>password </label><input type="text" name="password"><br/>
+    <input type="hidden" name="roles" value="USER"/>
+    <input type = "hidden" name = "gym" th:value ="${GymId}"/>
+    <br>
+    <label>변경할 리뷰 </label>
+    <div class="review_contents">
+      <div class="warning_msg">1자 이상 400자 이하로 작성해 주세요.</div>
+      <textarea rows="10" name ="reviews" class="review_textarea"></textarea>
+    </div>
+    <input type="submit" name="save" id="save" class="cmd" value="Register"/>
+  </form>
+  <table>
+    <br>
+    <tr>
+      <th>리뷰 번호</th>
+      <th>Review</th>
+      <th>별점</th>
+      <th>ID</th>
+      <th>헬스장 이름</th>
+    </tr>
+    <tbody>
+    <tr th:each = "re:${re}">
+      <td th:text ="${re.number_review}">
+      <td th:text ="${re.reviews}">
+      <td th:text ="${re.star}">
+      <td th:text ="${re.id}">
+      <td th:text ="${re.gym}">
+    </tr>
+    </tbody>
+  </table>
+</div>
+</body>
+</html>
